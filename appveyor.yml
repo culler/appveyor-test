@@ -9,25 +9,28 @@ image: macOS
 environment:
   matrix:
     - VENV: /Users/appveyor/venv3.8.2
-      PYTHONPATH: /Users/appveyor/python38
+      PYTHONPREFIX: /Users/appveyor/python38
+      PYTHONPATH:  /Users/appveyor/python38/lib/python3.8/site-packages
     - VENV: /Users/appveyor/venv3.7.5
-      PYTHONPATH: /Users/appveyor/python38
+      PYTHONPREFIX: /Users/appveyor/python37
+      PYTHONPATH: /Users/appveyor/python37/lib/python3.7/site-packages
 
 install:
+  # Print some environment info
   - sh: echo $APPVEYOR_BUILD_WORKER_IMAGE
   - sh: pwd
-  - sh: mkdir $PYTHONPATH
-  - sh: ls /Users/appveyor
+  - sh: mkdir $PYTHONPREFIX
+  - sh: export PATH=$PYTHONPREFIX/bin:$PATH
+
+  # Activate a virtualenv
   - sh: source $VENV/bin/activate
-  - sh: which python || true
-  - sh: python --version || true
-  - sh: which python3 || true
-  - sh: python3 --version || true
 
   # Install required python packages
   - python -m pip install --prefix=$PYTHONPATH cython
-  - sh: export PATH=$PYTHONPATH/bin:$PATH
   - sh: which cython || true
+  - sh: ls $PYTHONPREFIX
+  - sh: ls $PYTHONPATH
+  - sh: python -c "import Cython ; print(dir(Cython))"
 
 build:
   none
