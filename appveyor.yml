@@ -11,26 +11,27 @@ environment:
   # Appveyor runs consecutive jobs with each environment in the
   # list
   matrix:
-    - APPVEYOR_STACK_PYTHON: 3.8
-    - APPVEYOR_STACK_PYTHON: 3.7
-  
+    - VENV: venv3.8.2
+      PYTHONPATH: /Users/appveyor/python38
+    - VENV: venv3.7.5
+      PYTHONPATH: /Users/appveyor/python37
+
 install:
   - sh: echo ${APPVEYOR_BUILD_WORKER_IMAGE}
   - sh: pwd
   - sh: ls /Users/appveyor
-  - sh: echo $PATH
-  - sh: ls -l /usr/local/Cellar
+  - sh: mkdir $PYTHONPATH
+  - sh: source $VENV/bin/activate
   - sh: which python || true
-  - sh: which python3 || true
   - sh: python --version || true
-  - sh: ls /Users/appveyor/Library || true
-  - sh: env
+  - sh: which python3 || true
+  - sh: python3 --version || true
 
   # Install required python packages
-  - sh: python -m pip install --upgrade cython
+  - sh: python -m pip --target=$PYTHONPATH install cython
 
   - sh: ls /Users/appveyor/Library || true
-  - sh: which cython
+  - sh: which cython || true
 
 build:
   none
