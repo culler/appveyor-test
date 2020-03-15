@@ -1,0 +1,44 @@
+# https://ci.appveyor.com/project/culler/appveyor test
+
+branches:
+  only:
+    - master
+
+image: macOS
+
+environment:
+  # An environment matrix is a list of environment dictionaries.
+  # Appveyor runs consecutive jobs with each environment in the
+  # list
+#  matrix:
+#    - PYTHON: /Users/appveyor/venv3.8.2/bin/python
+#    - PYTHON: /Users/appveyor/venv3.7.5/bin/python
+  
+install:
+  - sh: echo ${APPVEYOR_BUILD_WORKER_IMAGE}
+  - sh: pwd
+  - sh: ls .
+  - sh: echo $PATH
+  - sh: ls -l /usr/local/bin/python*
+  - sh: ls -l /usr/pin/python* 
+  - sh: python --version
+
+  # Install required python packages
+  - sh: python -m pip install --upgrade --user cython
+
+build:
+  none
+
+#test_script:
+#  - sh: $PYTHON setup.py test
+  
+#after_test:
+#  - sh: $PYTHON setup.py bdist_wheel
+
+#artifacts:
+#  - path: dist/*.whl
+
+# on_success:
+#   You can use this step to upload your artifacts to a public website.
+#   See Appveyor's documentation for more details. Or you can simply
+#   access your wheels from the Appveyor "artifacts" tab for your build.
