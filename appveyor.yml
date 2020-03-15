@@ -26,7 +26,7 @@ install:
   - sh: source $VENV/bin/activate
 
   # Install required python packages
-  - python -m pip install --prefix=$PYTHONPATH cython
+  - python -m pip install --prefix=$PYTHONPREFIX cython
   - sh: which cython || true
   - sh: ls $PYTHONPREFIX
   - sh: ls $PYTHONPATH
