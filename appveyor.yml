@@ -25,7 +25,8 @@ install:
   - sh: python3 --version || true
 
   # Install required python packages
-  - python -m pip install --install-option="--prefix=$PYTHONPATH" cython
+  - python -m pip install --prefix=$PYTHONPATH cython
+  - sh: export PATH=$PYTHONPATH/bin:$PATH
   - sh: which cython || true
 
 build:
