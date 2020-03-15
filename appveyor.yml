@@ -21,6 +21,7 @@ install:
   - sh: echo $PATH
   - sh: ls -l /usr/local/Cellar
   - sh: python --version || true
+  - sh: ls /Users/appveyor/Library || true
 
   # Install required python packages
   - sh: python -m pip install --upgrade cython
