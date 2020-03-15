@@ -17,14 +17,13 @@ image: macOS
 install:
   - sh: echo ${APPVEYOR_BUILD_WORKER_IMAGE}
   - sh: pwd
-  - sh: ls .
+  - sh: ls /Users/appveyor
   - sh: echo $PATH
-  - sh: ls -l /usr/local/bin/python*
-  - sh: ls -l /usr/pin/python* 
-  - sh: python --version
+  - sh: ls -l /usr/local/Cellar
+  - sh: python --version || true
 
   # Install required python packages
-  - sh: python -m pip install --upgrade --user cython
+  - sh: python -m pip install --upgrade cython
 
 build:
   none
