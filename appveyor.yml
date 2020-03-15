@@ -6,7 +6,7 @@ branches:
 
 image: macOS
 
-environment:
+# environment:
   # An environment matrix is a list of environment dictionaries.
   # Appveyor runs consecutive jobs with each environment in the
   # list
