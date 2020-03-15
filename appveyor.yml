@@ -6,15 +6,13 @@ branches:
 
 image: macOS
 
-stack: Python 3.8
-
-# environment:
+environment:
   # An environment matrix is a list of environment dictionaries.
   # Appveyor runs consecutive jobs with each environment in the
   # list
-#  matrix:
-#    - PYTHON: /Users/appveyor/venv3.8.2/bin/python
-#    - PYTHON: /Users/appveyor/venv3.7.5/bin/python
+  matrix:
+    - APPVEYOR_STACK_PYTHON: 3.8
+    - APPVEYOR_STACK_PYTHON: 3.7
   
 install:
   - sh: echo ${APPVEYOR_BUILD_WORKER_IMAGE}
