@@ -6,6 +6,8 @@ branches:
 
 image: macOS
 
+stack: Python 3.8
+
 # environment:
   # An environment matrix is a list of environment dictionaries.
   # Appveyor runs consecutive jobs with each environment in the
@@ -20,6 +22,8 @@ install:
   - sh: ls /Users/appveyor
   - sh: echo $PATH
   - sh: ls -l /usr/local/Cellar
+  - sh: which python || true
+  - sh: which python3 || true
   - sh: python --version || true
   - sh: ls /Users/appveyor/Library || true
 
