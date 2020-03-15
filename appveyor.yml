@@ -11,16 +11,17 @@ environment:
   # Appveyor runs consecutive jobs with each environment in the
   # list
   matrix:
-    - VENV: venv3.8.2
+    - VENV: /Users/appveyor/venv3.8.2
       PYTHONPATH: /Users/appveyor/python38
-    - VENV: venv3.7.5
+
+    - VENV: /Users/appveyor/venv3.7.5
       PYTHONPATH: /Users/appveyor/python37
 
 install:
   - sh: echo ${APPVEYOR_BUILD_WORKER_IMAGE}
   - sh: pwd
-  - sh: ls /Users/appveyor
   - sh: mkdir $PYTHONPATH
+  - sh: ls /Users/appveyor
   - sh: source $VENV/bin/activate
   - sh: which python || true
   - sh: python --version || true
