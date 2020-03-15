@@ -8,19 +8,14 @@ image: macOS
 
 environment:
   matrix:
-    - VENV: /Users/appveyor/venv3.8.2
- #     PYTHONPATH: /Users/appveyor/python38
-
-    - VENV: /Users/appveyor/venv3.7.5
-#      PYTHONPATH: /Users/appveyor/python37
+    - TESTVAR: /Users/appveyor/python38
+    - TESTVAR: /Users/appveyor/python38
 
 install:
   - sh: echo ${APPVEYOR_BUILD_WORKER_IMAGE}
+  - sh: echo ${TESTVAR}
   - sh: pwd
-#  - sh: mkdir $PYTHONPATH
   - sh: ls /Users/appveyor
-  - sh: echo $VENV 
-#  - sh: source $VENV/bin/activate
   - sh: which python || true
   - sh: python --version || true
   - sh: which python3 || true
