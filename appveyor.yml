@@ -26,9 +26,13 @@ install:
   - sh: which python3 || true
   - sh: python --version || true
   - sh: ls /Users/appveyor/Library || true
+  - sh: env
 
   # Install required python packages
   - sh: python -m pip install --upgrade cython
+
+  - sh: ls /Users/appveyor/Library || true
+  - sh: which cython
 
 build:
   none
