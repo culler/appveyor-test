@@ -9,9 +9,7 @@ image: macOS
 init:
   # Currently the cache fails because 7-Zip is missing
   # FIX ME when the new image is released.
-  - sh: if [ ! -d /usr/local/Cellar/p7zip ] ; then \
-           brew install p7zip ; \
-        fi
+  - sh: if [ ! -d /usr/local/Cellar/p7zip ] ; then brew install p7zip ; fi 
 
 environment:
   matrix:
