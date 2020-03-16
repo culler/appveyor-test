@@ -11,7 +11,7 @@ init:
   # FIX ME when the new image is released.
   - sh: if [ ! -d /usr/local/Cellar/p7zip ] ; then \
            brew install p7zip ; \
-	fi
+        fi
 
 environment:
   matrix:
